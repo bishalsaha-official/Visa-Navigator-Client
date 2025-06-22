@@ -7,7 +7,9 @@ const MainLayouts = () => {
             <header>
                 <Navbar></Navbar>
             </header>
-            <Outlet></Outlet>
+            <main>
+                <Outlet></Outlet>
+            </main>
         </div>
     );
 };
