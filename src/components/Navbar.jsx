@@ -1,15 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
+import logo from '../assets/visa_icon.png'
 
 const Navbar = () => {
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/">All Visas</NavLink></li>
-        <li><NavLink to="/">Add Visa</NavLink></li>
-        <li><NavLink to="/">My Added Visa</NavLink></li>
-        <li><NavLink to="/">My Visa applications</NavLink></li>
+        <li><NavLink className="text-gray-800 text-[16px]" to="/">Home</NavLink></li>
+        <li><NavLink className="text-gray-800 text-[16px]" to="/allvisa">All Visa</NavLink></li>
+        <li><NavLink className="text-gray-800 text-[16px]" to="/addvisa">Add Visa</NavLink></li>
+        <li><NavLink className="text-gray-800 text-[16px]" to="/myaddedvisa">My Added Visa</NavLink></li>
+        <li><NavLink className="text-gray-800 text-[16px]" to="/visaapplication">My Visa applications</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-200 shadow-sm px-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -19,7 +20,10 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to="/" className="">Visa Navigator</Link>
+                <div className="flex items-center gap-2">
+                    <img className="w-8" src={logo} alt="" />
+                    <h2 className="font-bold text-2xl text-[#2B5FB5]">Visa Navigator</h2>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -27,8 +31,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn">Register</Link>
-                <Link className="btn">Login</Link>
+                <div className="flex items-center gap-2.5">
+                    <NavLink to='/register' className="btn bg-base-300 border text-gray-800">Register</NavLink>
+                    <NavLink to='/login' className="btn bg-base-300 border text-gray-800">Login</NavLink>
+                </div>
             </div>
         </div>
     );
