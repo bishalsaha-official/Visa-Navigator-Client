@@ -1,4 +1,5 @@
 import Banner from "../components/Banner";
+import VisaEligibilityChecker from "../components/VisaEligibilityChecker";
 import VisaTipsSection from "../components/VisaTipsSection";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <VisaTipsSection></VisaTipsSection>
+            <VisaEligibilityChecker></VisaEligibilityChecker>
         </div>
     );
 };
