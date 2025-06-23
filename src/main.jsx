@@ -10,6 +10,7 @@ import MyAddedVisa from './components/MyAddedVisa';
 import MyVisaApplication from './components/MyVisaApplication';
 import Home from './pages/Home';
 import AllVisa from './components/AllVisas';
+import AuthProvider from './providers/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'allvisa',
-        element: <AllVisa></AllVisa>
+        element: <AllVisa></AllVisa>,
+        loader: () => fetch('http://localhost:5000/visas')
       },
       {
         path: 'addvisa',
@@ -50,6 +52,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
