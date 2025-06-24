@@ -13,7 +13,7 @@ const LatestVisa = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-5">
                 {
-                    visas.map(visa => <VisaCard key={visa._id} visa={visa}></VisaCard>)
+                    visas.slice(0, 6).map(visa => <VisaCard key={visa._id} visa={visa}></VisaCard>)
                 }
             </div>
             <div>
