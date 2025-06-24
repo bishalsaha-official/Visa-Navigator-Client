@@ -11,11 +11,13 @@ import MyVisaApplication from './components/MyVisaApplication';
 import Home from './pages/Home';
 import AllVisa from './components/AllVisas';
 import VisaProvider from './providers/VisaProvider';
+import ErrorPage from './components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts></MainLayouts>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -31,8 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'allvisa',
-        element: <AllVisa></AllVisa>,
-        // loader: () => fetch('http://localhost:5000/visas')
+        element: <AllVisa></AllVisa>
       },
       {
         path: 'addvisa',
