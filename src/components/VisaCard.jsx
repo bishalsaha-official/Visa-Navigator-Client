@@ -41,7 +41,7 @@ const VisaCard = ({ visa }) => {
                 </div>
             </div>
             <div className="pt-4">
-                <Link to={`allvisa/${_id}`} className="btn bg-blue-700 text-white font-bold w-full">See Details</Link>
+                <Link to={`/visa/${_id}`} className="btn bg-blue-700 text-white font-bold w-full">See Details</Link>
             </div>
         </div>
     );

@@ -8,7 +8,7 @@ const MainLayouts = () => {
             <header>
                 <Navbar></Navbar>
             </header>
-            <main className="min-h-screen flex flex-col">
+            <main>
                 <Outlet></Outlet>
             </main>
             <footer>

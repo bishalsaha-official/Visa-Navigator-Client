@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddVisa = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,14 +21,14 @@ const AddVisa = () => {
         });
         const newVisa = {
             photoUrl,
-            countryName, 
-            visaType, 
-            processingTime, 
-            age, 
-            fee, 
-            visaValidity, 
-            applicationMethod, 
-            description, 
+            countryName,
+            visaType,
+            processingTime,
+            age,
+            fee,
+            visaValidity,
+            applicationMethod,
+            description,
             requiredDocuments
         }
         console.log(newVisa)
@@ -37,10 +39,16 @@ const AddVisa = () => {
             },
             body: JSON.stringify(newVisa)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Successfully Added Visa",
+                        icon: "success",
+                        draggable: true
+                    });
+                }
+            })
     };
 
     return (

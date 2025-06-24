@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import AllVisa from './components/AllVisas';
 import VisaProvider from './providers/VisaProvider';
 import ErrorPage from './components/ErrorPage';
+import VisaDetails from './components/VisaDetails';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
       {
         path: 'allvisa',
         element: <AllVisa></AllVisa>
+      },
+      {
+        path: 'visa/:id',
+        element: <VisaDetails></VisaDetails>,
+        loader: ({params})=> fetch(`http://localhost:5000/visas/${params.id}`)
       },
       {
         path: 'addvisa',
