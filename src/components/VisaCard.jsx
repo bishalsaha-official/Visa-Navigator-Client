@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 
 const VisaCard = ({ visa }) => {
-    const { _id, photoUrl, countryName, visaType, processingTime, age, fee, visaValidity, applicationMethod, description, requiredDocuments } = visa;
+    const { _id, photoUrl, countryName, visaType, processingTime, fee, visaValidity, applicationMethod } = visa;
+//     age
+// description
+// requiredDocuments
+
     return (
-        <div className="card w-full max-w-sm bg-base-100 shadow-xl border border-gray-200">
+        <div className="card w-full bg-base-100 shadow-xl border border-gray-200">
             <figure>
                 <img src={photoUrl} alt={countryName} className="h-48 w-full object-cover" />
             </figure>
