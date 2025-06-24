@@ -1,9 +1,36 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+    const [errorMessage, setErrorMessage] = useState('')
+    const {createUser} = useContext(AuthContext)
 
     const handleRegister = e => {
         e.preventDefault()
+        const form = e.target
+        const name= form.name.value
+        const photoUrl= form.photoUrl.value
+        const email= form.email.value
+        const password= form.password.value
+        const newFormData = {name, photoUrl, email, password}
+        if(password.length < 6){
+            setErrorMessage("Password Must Contains Atleast 6 Character")
+            return
+        }
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).+$/;
+        if(!passwordPattern.test(password)){
+            return setErrorMessage("Password must contain at least one uppercase, one lowercase, and one symbol.")
+        }
+
+        // Create account here
+        createUser(email, password)
+        .then((result) => {
+            console.log(result)
+        })
+        .catch(error => {
+            setErrorMessage(error.message)
+        })
     }
 
     return (
@@ -75,7 +102,12 @@ const Register = () => {
                         <button type="submit" className="btn btn-primary w-full">Register</button>
                     </div>
                 </form>
-                <p className="mt-5">Already Have An Account? <Link to="/login" className="text-primary">Login</Link></p>
+                <p className="my-5">Already Have An Account? <Link to="/login" className="text-primary">Login</Link></p>
+                <p className="text-red-600">
+                    {
+                        errorMessage ?? {errorMessage}
+                    }
+                </p>
             </div>
         </section>
     );

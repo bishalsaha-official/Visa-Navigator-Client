@@ -1,10 +1,25 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-    
+    const [errorMessage, setErrorMessage] = useState('')
+    const { signInUser } = useContext(AuthContext)
+
     const handleLogin = e => {
         e.preventDefault()
-        console.log('login')
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+
+        // Login User
+        signInUser(email, password)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                setErrorMessage(error.message)
+            })
     }
 
     return (
@@ -49,6 +64,11 @@ const Login = () => {
                     </div>
                 </form>
                 <p className="mt-5">Don't Have An Account? <Link to="/register" className="text-primary">Register</Link></p>
+                <p className="text-red-600">
+                    {
+                        errorMessage ?? { errorMessage }
+                    }
+                </p>
             </div>
         </div>
     );

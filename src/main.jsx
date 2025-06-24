@@ -13,6 +13,8 @@ import AllVisa from './components/AllVisas';
 import VisaProvider from './providers/VisaProvider';
 import ErrorPage from './components/ErrorPage';
 import VisaDetails from './components/VisaDetails';
+import AuthProvider from './providers/AuthProvider';
+import PrivateRoute from './components/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -38,20 +40,20 @@ const router = createBrowserRouter([
       },
       {
         path: 'visa/:id',
-        element: <VisaDetails></VisaDetails>,
-        loader: ({params})=> fetch(`http://localhost:5000/visas/${params.id}`)
+        element: <PrivateRoute><VisaDetails></VisaDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/visas/${params.id}`)
       },
       {
         path: 'addvisa',
-        element: <AddVisa></AddVisa>
+        element: <PrivateRoute><AddVisa></AddVisa></PrivateRoute>
       },
       {
         path: 'myaddedvisa',
-        element: <MyAddedVisa></MyAddedVisa>
+        element: <PrivateRoute><MyAddedVisa></MyAddedVisa></PrivateRoute>
       },
       {
         path: 'visaapplication',
-        element: <MyVisaApplication></MyVisaApplication>
+        element: <PrivateRoute><MyVisaApplication></MyVisaApplication></PrivateRoute>
       }
     ]
   },
@@ -59,8 +61,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <VisaProvider>
-      <RouterProvider router={router} />
-    </VisaProvider>
+    <AuthProvider>
+      <VisaProvider>
+        <RouterProvider router={router} />
+      </VisaProvider>
+    </AuthProvider>
   </StrictMode>,
 )
