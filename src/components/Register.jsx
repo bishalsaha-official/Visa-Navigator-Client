@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
@@ -28,6 +28,7 @@ const Register = () => {
         .then((result) => {
             console.log(result)
             form.reset()
+            Navigate('/')
         })
         .catch(error => {
             setErrorMessage(error.message)

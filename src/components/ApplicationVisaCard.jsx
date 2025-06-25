@@ -1,5 +1,37 @@
+import Swal from "sweetalert2";
+
 const ApplicationVisaCard = ({ visa }) => {
-    const { photoUrl,  countryName, visaType, fee, processingTime, applicationMethod, visaValidity, appliedDate} = visa;
+    const { _id, photoUrl, countryName, visaType, fee, processingTime, applicationMethod, visaValidity, appliedDate, email } = visa;
+
+    // Delete Function
+    const handleRemove = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/appliedvisa/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your item has been Removed.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
+
     return (
         <div className="card w-full bg-base-100 shadow-xl border border-gray-200">
             <figure>
@@ -36,6 +68,13 @@ const ApplicationVisaCard = ({ visa }) => {
                         <span className="font-medium">Applied Date:</span>
                         <span>{appliedDate}</span>
                     </div>
+                    <div className="flex justify-between">
+                        <span className="font-medium">Email:</span>
+                        <span>{email}</span>
+                    </div>
+                </div>
+                <div>
+                    <button onClick={() => handleRemove(_id)} className="btn btn-primary w-full">Remove Item</button>
                 </div>
             </div>
         </div>

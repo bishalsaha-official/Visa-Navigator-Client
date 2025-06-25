@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddVisa = () => {
+    const {user} = useContext(AuthContext)
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -19,7 +23,9 @@ const AddVisa = () => {
                 requiredDocuments.push(document.value);
             }
         });
+
         const newVisa = {
+            email: user?.email,
             photoUrl,
             countryName,
             visaType,
