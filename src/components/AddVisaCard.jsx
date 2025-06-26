@@ -67,6 +67,13 @@ const AddVisaCard = ({ visa }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        title: "Updated Item Done",
+                        icon: "success",
+                        draggable: true
+                    });
+                }
             })
     }
 

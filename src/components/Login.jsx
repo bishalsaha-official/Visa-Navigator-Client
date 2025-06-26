@@ -20,7 +20,6 @@ const Login = () => {
                 console.log(result)
                 form.reset()
                 navigate(location?.state ? location.state : '/')
-
             })
             .catch(error => {
                 setErrorMessage(error.message)
