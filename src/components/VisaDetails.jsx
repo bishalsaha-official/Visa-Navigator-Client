@@ -22,7 +22,7 @@ const VisaDetails = () => {
         const newApplyVisa = { email, firstName, lastName, appliedDate, fee, countryName, photoUrl, processingTime, visaValidity, applicationMethod }
         console.log(newApplyVisa)
 
-        fetch('http://localhost:5000/appliedvisa', {
+        fetch('https://visa-navigator-server-kohl.vercel.app/appliedvisa', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

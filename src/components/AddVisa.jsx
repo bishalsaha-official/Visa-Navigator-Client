@@ -38,7 +38,7 @@ const AddVisa = () => {
             requiredDocuments
         }
         console.log(newVisa)
-        fetch('http://localhost:5000/visas', {
+        fetch('https://visa-navigator-server-kohl.vercel.app/visas', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

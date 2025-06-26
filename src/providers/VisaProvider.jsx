@@ -5,7 +5,7 @@ export const VisaContext = createContext(null)
 const VisaProvider = ({children}) => {
     const [visas, setVisas] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/visas')
+        fetch('https://visa-navigator-server-kohl.vercel.app/visas')
         .then(res => res.json())
         .then(data => setVisas(data))
     }, [])

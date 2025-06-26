@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: 'visa/:id',
         element: <PrivateRoute><VisaDetails></VisaDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/visas/${params.id}`)
+        loader: ({ params }) => fetch(`https://visa-navigator-server-kohl.vercel.app/visas/${params.id}`)
       },
       {
         path: 'addvisa',
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: 'visaapplication',
         element: <PrivateRoute><MyVisaApplication></MyVisaApplication></PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/appliedvisa")
+        loader: () => fetch("https://visa-navigator-server-kohl.vercel.app/appliedvisa")
       }
     ]
   },

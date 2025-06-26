@@ -17,7 +17,7 @@ const AddVisaCard = ({ visa }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/visas/${id}`, {
+                fetch(`https://visa-navigator-server-kohl.vercel.app/visas/${id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())
@@ -57,7 +57,7 @@ const AddVisaCard = ({ visa }) => {
             visaValidity,
         }
 
-        fetch(`http://localhost:5000/visas/${_id}`, {
+        fetch(`https://visa-navigator-server-kohl.vercel.app/visas/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
